@@ -1,0 +1,1 @@
+npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y --save-dev
