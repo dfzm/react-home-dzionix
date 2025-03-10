@@ -7,13 +7,13 @@ function BannerHome() {
     <>
       <section className="bannerPrincipal">
         <div className="column1">
-          <Titleh1 tittle="Desarrollo de Paginas Web" />
+          <Titleh1 title="Desarrollo de Paginas Web" />
           <p>
             Ofrecemos soluciones completas de desarrollo web para emprendedores,
             pequeñas y medianas empresas, desde tiendas online hasta sitios
-            corporativos y catálogos digitales.{" "}
+            corporativos y catálogos digitales.
           </p>
-          <Boton name="Ver servicios" enlace="https://dzionix.com/" />
+          <Boton name="Ver servicios" enlace="#servicios" />
         </div>
         <div className="column2">
           <img

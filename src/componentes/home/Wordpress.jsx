@@ -2,7 +2,6 @@ import React from "react";
 import Tituloh2 from "../Tituloh2";
 import { Edit, Seo, Seguridad } from "../Icono";
 import Boton from "../Boton";
-
 import BotonLight from "../BotonLight";
 
 const Wordpress = () => {

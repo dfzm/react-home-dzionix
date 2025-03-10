@@ -1,19 +1,19 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function Titleh1({ tittle, className = "" }) {
+function Titleh1({ title, className = "" }) {
   return (
     <h1
       className={`
     ${className}`}
     >
-      {tittle}
+      {title}
     </h1>
   );
 }
 
 Titleh1.propTypes = {
-  tittle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 

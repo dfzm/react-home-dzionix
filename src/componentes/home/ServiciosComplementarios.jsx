@@ -4,7 +4,10 @@ import Boton from "../Boton";
 
 const ServiciosComplementarios = () => {
   return (
-    <section className="servicios-complementarios">
+    <section
+      className="servicios-complementarios"
+      id="servicios-complementarios"
+    >
       <div className="contenedor-h2">
         <Tituloh2 tittle="Servicios Complementarios" />
       </div>

@@ -46,7 +46,7 @@ const Servicios = () => {
   ];
 
   return (
-    <section className="comp-servicios">
+    <section className="comp-servicios" id="servicios">
       <Tituloh2 tittle="Nuestros Servicios" />
       <section className="servicios-home">
         {Datos.map((item) => (
@@ -60,7 +60,10 @@ const Servicios = () => {
           />
         ))}
       </section>
-      <BotonLight name="Ver Servicios Complementarios" enlace="#" />
+      <BotonLight
+        name="Ver Servicios Complementarios"
+        enlace="#servicios-complementarios"
+      />
     </section>
   );
 };

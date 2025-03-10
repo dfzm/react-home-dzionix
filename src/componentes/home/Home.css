@@ -1,6 +1,8 @@
 :root {
   --padding-secciones: 80px 5%;
   --blanco: #fff;
+  --primary-color: #e95002;
+  --secondary-color: #181818;
 }
 
 ul {
@@ -19,6 +21,8 @@ section {
   box-sizing: border-box;
 }
 p {
+  font-family: "Lato", sans-serif;
+  font-size: 17px;
   line-height: 1.7em;
 }
 /**** 
@@ -33,7 +37,7 @@ BANNER PRINCIPAL
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 80px 5%;
+  padding: var(--padding-secciones);
   box-sizing: border-box;
   height: 90vh;
 }
@@ -73,12 +77,12 @@ SERVICIOS
   flex-direction: column;
   padding: var(--padding-secciones);
   /* background: linear-gradient(180deg, #181818, #4d0e75); */
-  background: linear-gradient(180deg, #181818, #0074d9);
+
 }
 
 .comp-servicios .svg-icon {
   width: 45px;
-  fill: #fff;
+  fill: var(--primary-color);
 }
 
 .comp-servicios h2 {
@@ -87,13 +91,26 @@ SERVICIOS
   margin-bottom: 30px;
 }
 
+.comp-servicios .caja-servicio .btn-principal {
+  border: 3px solid #fff;
+  color: var(--primary-color);
+  margin-top: 20px;  
+  width: 100%;
+}
+.comp-servicios .caja-servicio .btn-principal a{
+  color: #fff;
+}
+
+.comp-servicios .caja-servicio .btn-principal svg {
+  fill: var(--primary-color);
+}
+
 .comp-servicios .caja-servicio .icon-wrapper {
   width: 100px;
   height: 100px;
   animation: particleAnim 18s infinite;
-  /*background: linear-gradient(45deg, #4d0e75, #8b5cf6);*/
-  background: linear-gradient(45deg, #004bc9, #2575fc);
-  color: white;
+  background: #fff;
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,12 +132,10 @@ SERVICIOS
 
 .servicios-home {
   font-family: Poppins;
-
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  width: 100%;
   gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
 }
 
 .servicios-home .caja-servicio {
@@ -129,30 +144,28 @@ SERVICIOS
   align-items: flex-start;
   justify-content: flex-end;
   gap: 20px;
-  /*background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);*/
-  border: 4px solid #fff;
+  background: var(--primary-color);
   border-radius: 20px;
   padding: 40px 25px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px #e94f0240;
   transition: all 0.3s ease;
   width: 100%;
 }
 
 .caja-servicio:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 25px #e94f0269;
 }
 
 .caja-servicio .titulo-caja {
-  font-size: 1.2em;
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
 }
 .caja-servicio p {
   color: #fff;
-  font-size: 15px;
 }
 /****
 POR QUE ELEGIRNOS 
@@ -164,12 +177,9 @@ POR QUE ELEGIRNOS
   width: 100%;
   display: flex;
   padding: var(--padding-secciones);
-  background: #4d0e75;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /*background: linear-gradient(180deg, #4d0e75, #181818);*/
-  background: linear-gradient(180deg, #004b8d, #181818);
   gap: 20px;
 }
 
@@ -233,11 +243,12 @@ POR QUE ELEGIRNOS
 }
 .porque-elegirnos .col-2 .item-elegirnos h3 {
   font-weight: 600;
+  font-size: 20px;
 }
 .porque-elegirnos .col-2 .item-elegirnos svg {
   width: 40px;
   color: #fff;
-  fill: #e95002;
+  fill: var(--primary-color);
 }
 
 /* Modal styles */
@@ -323,12 +334,12 @@ POR QUE ELEGIRNOS
 /*** BENEFICIOS ***/
 
 .beneficios-home {
-  background: #e95002;
+  background: var(--primary-color);
   font-family: Poppins;
   padding: 80px 0;
 }
 .beneficios-home .beneficios {
-  background: #e95002;
+  background: var(--primary-color);
   display: flex;
   align-self: center;
   gap: 20px;
@@ -366,7 +377,7 @@ POR QUE ELEGIRNOS
 }
 .beneficios-home h3 {
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4em;
 }
@@ -379,8 +390,7 @@ POR QUE ELEGIRNOS
 /*** WORDPRESS-HOME ***/
 
 .h-wordpress {
-  /* background: linear-gradient(180deg, #181818, #4d0e75); */
-  background: linear-gradient(180deg, #181818, #004b8d);
+
   color: #fff;
   width: 100%;
   display: flex;
@@ -425,14 +435,13 @@ POR QUE ELEGIRNOS
 }
 
 .h-wordpress .botones button {
-  padding: 16px 20px;
   width: 50%;
 }
 
 /**** SERVICIOS COMPLEMENTARIOS ***/
 
 .servicios-complementarios {
-  background: linear-gradient(180deg, #004b8d, #181818);
+
   display: flex;
   column-gap: 40px;
   flex-direction: row;
@@ -441,13 +450,14 @@ POR QUE ELEGIRNOS
   width: 100%;
 }
 .servicios-complementarios .contenedor-h2 {
-  background-color: #e95002;
+  border: 3px solid #fff;
   border-radius: 0 20px 20px 0;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: center;
+  margin-left: -10px;
   padding: 0 50px;
   width: 25%;
 }
@@ -460,7 +470,7 @@ POR QUE ELEGIRNOS
 }
 
 .servicios-complementarios .contenedor-complementarios .complementarios {
-  border: 4px solid #fff;
+  background: var(--primary-color);
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
   display: flex;
@@ -478,7 +488,7 @@ POR QUE ELEGIRNOS
 }
 
 .servicios-complementarios .contenedor-complementarios .complementarios h3 {
-  font-size: 25px;
+  font-size: 22px;
   color: #fff;
 }
 .servicios-complementarios .contenedor-complementarios .complementarios p {
@@ -490,6 +500,12 @@ POR QUE ELEGIRNOS
   justify-content: flex-end;
   padding: 0 5% 0 0;
   width: 75%;
+}
+
+.servicios-complementarios .btn-principal a{
+border: 3px solid #fff;
+border-radius: 8px;
+padding: 16px 20px;
 }
 
 /**** PROCESO DE CREACIÓN ****/
@@ -534,7 +550,6 @@ body {
 }
 .proceso-creacion h2 {
   color: #fff;
-  text-shadow: 0 0 5px #e95002;
   position: relative;
   z-index: 2;
 }
@@ -672,4 +687,290 @@ body {
 
 .view-all-btn:hover {
   transform: scale(1.05);
+}
+
+/* Móviles pequeños */
+@media (min-width: 320px) and (max-width: 575px) {
+  :root {
+    --padding-secciones: 50px 7%;
+  }
+  .bannerPrincipal {
+    height: 70vh;
+  }
+  .bannerPrincipal .column1 {
+    width: 100%;
+  }
+  .bannerPrincipal .column2 {
+    display: none;
+  }
+
+  .bannerPrincipal .column1 h1{
+    font-size: 50px;
+  }
+  .comp-servicios h2{
+
+    font-size: 35px;
+    text-align: left;
+    width: 100%;
+  }
+  .servicios-home {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+  .porque-elegirnos .column.col-1 {
+    display: none;
+  }
+  .porque-elegirnos .column.col-2 {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .porque-elegirnos .column.col-2  h2{
+    font-size: 35px;
+  }
+  .beneficios-home {
+    padding: var(--padding-secciones);
+  }
+  .beneficios-home h2{
+    font-size: 35px;
+    width: 100%;
+    text-align: left;
+  }
+  .beneficios-home .beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .beneficios-home .beneficios .caja-beneficio {
+    padding: 0;
+  }
+  .h-wordpress .column.col-1 {
+    width: 100%;
+    padding: 0;
+  }
+  .h-wordpress .column.col-2 {
+    display: none;
+  }
+  .h-wordpress h2{
+    font-size: 35px;
+  }
+  .h-wordpress .iconos {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .h-wordpress .iconos .caja-icon span{
+    font-size: 17px;
+  }
+  .h-wordpress .botones{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .h-wordpress .botones button{
+    width: 100%;
+  }
+  .servicios-complementarios {
+    flex-direction: column;
+    padding: var(--padding-secciones);
+  }
+  .servicios-complementarios .contenedor-h2 {
+    background-color: transparent;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .servicios-complementarios .contenedor-h2 h2 {
+    font-size: 35px;
+    transform: none;
+    text-align: left;
+
+  }
+
+  .servicios-complementarios .contenedor-complementarios {
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+  .servicios-complementarios .contenedor-complementarios .complementarios {
+    padding: 30px;
+    width: 100%;
+  }
+  .proceso-creacion {
+    padding: var(--padding-secciones);
+  }
+  .proceso-creacion h2{
+    font-size: 34px;
+    text-align: left;
+  }
+  .proyectos-home .tituloh2{
+    font-size: 34px;
+    text-align: left;
+  }
+}
+
+/* Móviles grandes */
+@media (min-width: 576px) and (max-width: 767px) {
+  :root {
+    --padding-secciones: 50px 7%;
+  }
+  .bannerPrincipal {
+    height: 70vh;
+  }
+  .bannerPrincipal .column1 {
+    width: 100%;
+  }
+  .bannerPrincipal .column2 {
+    display: none;
+  }
+
+  .servicios-home {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+  .porque-elegirnos .column.col-1 {
+    display: none;
+  }
+  .porque-elegirnos .column.col-2 {
+    width: 100%;
+  }
+
+  .beneficios-home {
+    padding: var(--padding-secciones);
+  }
+  .beneficios-home .beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .beneficios-home .beneficios .caja-beneficio {
+    padding: 0;
+  }
+  .h-wordpress .column.col-1 {
+    width: 100%;
+    padding: 0;
+  }
+  .h-wordpress .column.col-2 {
+    display: none;
+  }
+  .servicios-complementarios {
+    flex-direction: column;
+    padding: var(--padding-secciones);
+  }
+  .servicios-complementarios .contenedor-h2 {
+    background-color: transparent;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .servicios-complementarios .contenedor-h2 h2 {
+    font-size: 3em;
+    transform: none;
+  }
+
+  .servicios-complementarios .contenedor-complementarios {
+    padding: 0;
+    width: 100%;
+  }
+  .servicios-complementarios .contenedor-complementarios .complementarios {
+    padding: 30px;
+  }
+  .proceso-creacion {
+    padding: var(--padding-secciones);
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --padding-secciones: 50px 7%;
+  }
+  .servicios-home {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+  .porque-elegirnos .column.col-1 {
+    display: none;
+  }
+  .porque-elegirnos .column.col-2 {
+    width: 100%;
+  }
+
+  .beneficios-home {
+    padding: var(--padding-secciones);
+  }
+  .beneficios-home .beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .beneficios-home .beneficios .caja-beneficio {
+    padding: 0;
+  }
+  .h-wordpress .column.col-1 {
+    padding: 0;
+  }
+  .servicios-complementarios {
+    flex-direction: column;
+    padding: var(--padding-secciones);
+  }
+  .servicios-complementarios .contenedor-h2 {
+    background-color: transparent;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .servicios-complementarios .contenedor-h2 h2 {
+    font-size: 3em;
+    transform: none;
+  }
+
+  .servicios-complementarios .contenedor-complementarios {
+    padding: 0;
+    width: 100%;
+  }
+  .proceso-creacion {
+    padding: var(--padding-secciones);
+  }
+}
+
+/* Ordenadores portátiles/Desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root {
+    --padding-secciones: 40px 5%;
+  }
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+}
+
+/* Pantallas extra grandes / 2K */
+@media (min-width: 1400px) and (max-width: 1920px) {
+  .porque-elegirnos .column.col-1 img {
+    height: auto;
+    width: 90%;
+  }
+}
+
+/* Pantallas 4K */
+@media (min-width: 2000px) {
 }
