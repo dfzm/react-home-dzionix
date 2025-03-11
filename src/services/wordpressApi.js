@@ -38,21 +38,120 @@ const isCacheValid = (timestamp) => {
 export const getMenuItems = async (forceRefresh = false) => {
   // Si tenemos datos en caché y no se fuerza la actualización, los devolvemos
   if (!forceRefresh && apiCache.menuItems && isCacheValid(apiCache.menuTimestamp)) {
+    console.log("Devolviendo menú desde caché");
     return apiCache.menuItems;
   }
 
   try {
-    const response = await fetch(`${WP_API_BASE}/wp/v2/menu/primary`);
-    const data = await response.json();
+    console.log("Obteniendo menú desde la API");
+    
+    // Intentamos primero con el endpoint personalizado
+    let response = await fetch(`${WP_API_BASE}/wp/v2/menu/primary`);
+    let menuItems = null;
+    
+    // Si no existe ese endpoint, intentamos con el endpoint de menus-api
+    if (!response.ok) {
+      console.log("Endpoint personalizado no encontrado, intentando con menus-api");
+      response = await fetch(`${WP_API_BASE}/menus/v1/menus/main-menu`);
+    }
+    
+    // Si tampoco existe, intentamos con el endpoint de wp-api-menus
+    if (!response.ok) {
+      console.log("Endpoint menus-api no encontrado, intentando con wp-api-menus");
+      response = await fetch(`${WP_API_BASE}/wp-api-menus/v2/menus/2`); // Intentamos con ID 2 que es común para menús principales
+    }
+    
+    // Si tampoco existe, intentamos con el endpoint de wp-api-menus sin ID específico
+    if (!response.ok) {
+      console.log("Endpoint wp-api-menus con ID específico no encontrado, intentando obtener todos los menús");
+      response = await fetch(`${WP_API_BASE}/wp-api-menus/v2/menus`);
+    }
+    
+    // Intentamos obtener directamente las páginas publicadas
+    if (!response.ok) {
+      console.log("No se encontraron endpoints de menú, intentando obtener directamente las páginas");
+      response = await fetch(`${WP_API_BASE}/wp/v2/pages?per_page=20&status=publish`);
+      
+      if (response.ok) {
+        const pages = await response.json();
+        console.log("Páginas obtenidas:", pages);
+        
+        // Convertimos las páginas al formato de menú
+        menuItems = pages.map(page => ({
+          ID: page.id,
+          id: page.id,
+          title: page.title.rendered,
+          url: page.link,
+          type: "page"
+        }));
+      }
+    } else {
+      // Si alguno de los endpoints anteriores funcionó, procesamos la respuesta
+      const data = await response.json();
+      
+      // Dependiendo del plugin de menú, la estructura puede variar
+      if (data.items) {
+        menuItems = data.items;
+      } else if (Array.isArray(data) && data.length > 0 && data[0].items) {
+        menuItems = data[0].items;
+      } else if (Array.isArray(data)) {
+        menuItems = data;
+      } else {
+        menuItems = [data]; // Si es un solo objeto, lo convertimos en array
+      }
+    }
+    
+    // Si no se pudo obtener el menú de ninguna forma, intentamos con el endpoint de nav_menu_items
+    if (!menuItems) {
+      console.log("Intentando obtener elementos de menú con endpoint nav_menu_items");
+      response = await fetch(`${WP_API_BASE}/wp/v2/nav_menu_items?per_page=20`);
+      
+      if (response.ok) {
+        const navItems = await response.json();
+        menuItems = navItems.map(item => ({
+          ID: item.id,
+          id: item.id,
+          title: item.title.rendered,
+          url: item.link, // Cambio aquí
+          type: item.type
+        }));
+      }
+    }
+    
+    // Si ninguno de los endpoints funciona, devolvemos un menú de prueba
+    if (!menuItems || menuItems.length === 0) {
+      console.log("No se pudo obtener el menú desde la API, devolviendo menú de prueba");
+      menuItems = [
+        { ID: 1, title: "Inicio", url: "/inicio/" },
+        { ID: 2, title: "Servicios", url: "https://dzionix.com/servicios/" },
+        { ID: 3, title: "Portafolio", url: "/portafolio/" },
+        { ID: 4, title: "Contacto", url: "https://dzionix.com/contacto/" }
+      ];
+    }
+    
+    console.log("Menú final obtenido:", menuItems);
     
     // Guardamos los datos en caché
-    apiCache.menuItems = data;
+    apiCache.menuItems = menuItems;
     apiCache.menuTimestamp = Date.now();
     
-    return data;
+    return menuItems;
   } catch (error) {
     console.error("Error fetching menu:", error);
-    return [];
+    
+    // En caso de error, devolvemos un menú de prueba
+    const demoMenu = [
+      { ID: 1, title: "Inicio", url: "/inicio/" },
+      { ID: 2, title: "Servicios", url: "https://dzionix.com/servicios/" },
+      { ID: 3, title: "Portafolio", url: "/portafolio/" },
+      { ID: 4, title: "Contacto", url: "https://dzionix.com/contacto/" }
+    ];
+    
+    // Guardamos los datos en caché
+    apiCache.menuItems = demoMenu;
+    apiCache.menuTimestamp = Date.now();
+    
+    return demoMenu;
   }
 };
 

@@ -5,7 +5,7 @@ import { ArrowRight } from "../Icono";
 const ClientePortafolioHome = () => {
   return (
     <>
-      {proyectos.map((item) => (
+      {proyectos.slice(0, 3).map((item) => (
         <article key={item.id} className="project-card">
           <div className="project-image-container">
             <img src={item.image} alt={item.alt} className="project-image" />

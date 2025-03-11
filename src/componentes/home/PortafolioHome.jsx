@@ -13,7 +13,7 @@ const PortafolioHome = () => {
       </section>
       <Boton
         name="Ver más Proyectos"
-        enlace="https://dzionix.com/trabajos-realizados/"
+        enlace="/portafolio/"
       />
     </section>
   );
