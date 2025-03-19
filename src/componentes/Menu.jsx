@@ -1,7 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { getMenuItems } from "../services/wordpressApi";
+import "./Menu.css";
 
+const MenuItem = ({ item, handleMenuClick }) => {
+  return (
+    <li className="menu-item">
+      <a href={item.url} onClick={(e) => handleMenuClick(item.url, e)}>
+        {item.title}
+      </a>
+      {item.children && item.children.length > 0 && (
+        <ul className="submenu">
+          {item.children.map((child) => (
+            <MenuItem
+              key={child.ID || child.id}
+              item={child}
+              handleMenuClick={handleMenuClick}
+            />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+MenuItem.propTypes = {
+  item: PropTypes.shape({
+    ID: PropTypes.number,
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    children: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  handleMenuClick: PropTypes.func.isRequired,
+};
 
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -13,60 +46,75 @@ const Menu = () => {
     const fetchMenu = async () => {
       try {
         setIsLoading(true);
-        // Forzamos una actualización del menú (ignorando la caché)
         const items = await getMenuItems(true);
-        console.log("Menú obtenido:", items); // Depuración
         setMenuItems(items);
-        setIsLoading(false);
       } catch (err) {
         console.error("Error al cargar el menú:", err);
+        // Menú de respaldo en caso de error
+        setMenuItems([
+          { id: 1, title: "Inicio", url: "/inicio/", children: [] },
+          {
+            id: 2,
+            title: "Servicios",
+            url: "#",
+            children: [
+              {
+                id: 21,
+                title: "Desarrollo de páginas web",
+                url: "https://dzionix.com/desarrollo-paginas-web/",
+                children: [],
+              },
+              {
+                id: 22,
+                title: "Desarrollo de tiendas online",
+                url: "https://dzionix.com/desarrollo-de-tiendas-online-y-catalogo-virtuales/",
+                children: [],
+              },
+              {
+                id: 23,
+                title: "Renovación web",
+                url: "https://dzionix.com/rediseno-web-profesional-potencia-tu-sitio-con-un-diseno-moderno-y-agil/",
+                children: [],
+              },
+            ],
+          },
+          { id: 3, title: "Portafolio", url: "/portafolio/", children: [] },
+          { id: 4, title: "Pedir Presupuesto", url: "#", children: [] },
+        ]);
         setError(err.message);
+      } finally {
         setIsLoading(false);
       }
     };
-    
+
     fetchMenu();
   }, []);
 
   const handleMenuClick = (url, e) => {
-    console.log("Click en elemento de menú:", url); // Depuración
-    
-    // Lista de rutas que queremos manejar con React Router (solo las páginas hechas con React)
-    const reactRoutes = ['/inicio', '/portafolio'];
-    
-    // Extraer la ruta de la URL completa
+    if (url === "#") {
+      e.preventDefault();
+      return;
+    }
+
+    const reactRoutes = ["/inicio", "/portafolio"];
     let path;
-    
+
     try {
-      // Intentamos usar URL para extraer el pathname
       const urlObj = new URL(url);
       path = urlObj.pathname;
-    } catch (e) {
-      // Si no es una URL válida, asumimos que ya es una ruta
+    } catch {
       path = url;
     }
 
-    console.log("Ruta extraída:", path); // Depuración
-    
-    // Verificamos si la ruta debe manejarse internamente con React Router
-    const isReactRoute = reactRoutes.some(route => 
-      path === route || path === `${route}/` || path.startsWith(`${route}?`)
+    const isReactRoute = reactRoutes.some(
+      (route) =>
+        path === route || path === `${route}/` || path.startsWith(`${route}?`)
     );
-    
-    console.log("¿Es ruta de React?", isReactRoute); // Depuración
-    
+
     if (isReactRoute) {
-      // Si es una ruta de React, prevenimos el comportamiento por defecto
       e.preventDefault();
-      
-      // Navega con React Router
-      const cleanPath = path.startsWith('/') ? path : `/${path}`;
-      console.log("Navegando a ruta de React:", cleanPath); // Depuración
+      const cleanPath = path.startsWith("/") ? path : `/${path}`;
       navigate(cleanPath);
-    } else {
-      // Si es una ruta de WordPress, dejamos que el navegador maneje la navegación
-      // No prevenimos el comportamiento por defecto, así que el enlace funcionará normalmente
-      console.log("Navegación normal a URL de WordPress:", url); // Depuración
     }
   };
 
@@ -74,33 +122,16 @@ const Menu = () => {
     return <div>Cargando menú...</div>;
   }
 
-  if (error) {
-    return <div>Error al cargar el menú: {error}</div>;
-  }
-
   return (
     <nav className="menu-principal">
       <ul>
-        {Array.isArray(menuItems) && menuItems.length > 0 ? (
-          menuItems.map((item) => (
-            <li key={item.ID || item.id}>
-              <a 
-                href={item.url} 
-                onClick={(e) => handleMenuClick(item.url, e)}
-              >
-                {item.title}
-              </a>
-              {/* Mostrar el tipo de elemento para depuración */}
-              {/* {process.env.NODE_ENV === 'development' && (
-                <small style={{ fontSize: '0.7em', color: '#999', marginLeft: '5px' }}>
-                  ({item.type || 'link'})
-                </small>
-              )} */}
-            </li>
-          ))
-        ) : (
-          <li>No hay elementos en el menú</li>
-        )}
+        {menuItems.map((item) => (
+          <MenuItem
+            key={item.id}
+            item={item}
+            handleMenuClick={handleMenuClick}
+          />
+        ))}
       </ul>
     </nav>
   );

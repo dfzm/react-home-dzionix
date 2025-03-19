@@ -1,10 +1,3 @@
-:root {
-  --padding-secciones: 80px 5%;
-  --blanco: #fff;
-  --primary-color: #e95002;
-  --secondary-color: #181818;
-}
-
 ul {
   margin-block-start: 0;
   margin-block-end: 0;
@@ -36,10 +29,10 @@ BANNER PRINCIPAL
   color: #fff;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: var(--padding-secciones);
   box-sizing: border-box;
-  height: 90vh;
+  height: 100vh;
 }
 .bannerPrincipal .column1 {
   display: flex;
@@ -77,7 +70,6 @@ SERVICIOS
   flex-direction: column;
   padding: var(--padding-secciones);
   /* background: linear-gradient(180deg, #181818, #4d0e75); */
-
 }
 
 .comp-servicios .svg-icon {
@@ -94,10 +86,10 @@ SERVICIOS
 .comp-servicios .caja-servicio .btn-principal {
   border: 3px solid #fff;
   color: var(--primary-color);
-  margin-top: 20px;  
+  margin-top: 20px;
   width: 100%;
 }
-.comp-servicios .caja-servicio .btn-principal a{
+.comp-servicios .caja-servicio .btn-principal a {
   color: #fff;
 }
 
@@ -248,7 +240,6 @@ POR QUE ELEGIRNOS
 .porque-elegirnos .col-2 .item-elegirnos svg {
   width: 40px;
   color: #fff;
-  fill: var(--primary-color);
 }
 
 /* Modal styles */
@@ -390,7 +381,6 @@ POR QUE ELEGIRNOS
 /*** WORDPRESS-HOME ***/
 
 .h-wordpress {
-
   color: #fff;
   width: 100%;
   display: flex;
@@ -441,7 +431,6 @@ POR QUE ELEGIRNOS
 /**** SERVICIOS COMPLEMENTARIOS ***/
 
 .servicios-complementarios {
-
   display: flex;
   column-gap: 40px;
   flex-direction: row;
@@ -502,10 +491,10 @@ POR QUE ELEGIRNOS
   width: 75%;
 }
 
-.servicios-complementarios .btn-principal a{
-border: 3px solid #fff;
-border-radius: 8px;
-padding: 16px 20px;
+.servicios-complementarios .btn-principal a {
+  border: 3px solid #fff;
+  border-radius: 8px;
+  padding: 16px 20px;
 }
 
 /**** PROCESO DE CREACIÓN ****/
@@ -690,7 +679,7 @@ body {
 }
 
 /* Móviles pequeños */
-@media (min-width: 320px) and (max-width: 575px) {
+@media (min-width: 120px) and (max-width: 575px) {
   :root {
     --padding-secciones: 50px 7%;
   }
@@ -704,11 +693,10 @@ body {
     display: none;
   }
 
-  .bannerPrincipal .column1 h1{
+  .bannerPrincipal .column1 h1 {
     font-size: 50px;
   }
-  .comp-servicios h2{
-
+  .comp-servicios h2 {
     font-size: 35px;
     text-align: left;
     width: 100%;
@@ -729,13 +717,13 @@ body {
     padding: 25px;
   }
 
-  .porque-elegirnos .column.col-2  h2{
+  .porque-elegirnos .column.col-2 h2 {
     font-size: 35px;
   }
   .beneficios-home {
     padding: var(--padding-secciones);
   }
-  .beneficios-home h2{
+  .beneficios-home h2 {
     font-size: 35px;
     width: 100%;
     text-align: left;
@@ -756,7 +744,7 @@ body {
   .h-wordpress .column.col-2 {
     display: none;
   }
-  .h-wordpress h2{
+  .h-wordpress h2 {
     font-size: 35px;
   }
   .h-wordpress .iconos {
@@ -764,15 +752,15 @@ body {
     flex-direction: column;
     gap: 40px;
   }
-  .h-wordpress .iconos .caja-icon span{
+  .h-wordpress .iconos .caja-icon span {
     font-size: 17px;
   }
-  .h-wordpress .botones{
+  .h-wordpress .botones {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  .h-wordpress .botones button{
+  .h-wordpress .botones button {
     width: 100%;
   }
   .servicios-complementarios {
@@ -788,7 +776,6 @@ body {
     font-size: 35px;
     transform: none;
     text-align: left;
-
   }
 
   .servicios-complementarios .contenedor-complementarios {
@@ -803,11 +790,11 @@ body {
   .proceso-creacion {
     padding: var(--padding-secciones);
   }
-  .proceso-creacion h2{
+  .proceso-creacion h2 {
     font-size: 34px;
     text-align: left;
   }
-  .proyectos-home .tituloh2{
+  .proyectos-home .tituloh2 {
     font-size: 34px;
     text-align: left;
   }

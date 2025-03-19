@@ -6,7 +6,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --padding-secciones: 80px 5%;
+  --blanco: #fff;
+  --primary-color: #e95002;
+  --secondary-color: #181818;
 }
+
 body {
   margin: 0;
   padding: 0;

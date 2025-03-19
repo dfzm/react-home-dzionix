@@ -1,0 +1,140 @@
+header {
+  background-color: #181818;
+  box-shadow: 0 0 5px #ffffff55;
+  color: #181818;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 5%;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Logo */
+header figure {
+  display: flex;
+  width: 30%;
+}
+
+header figure img {
+  width: 50%;
+}
+
+/* Menú versión escritorio */
+header .menu-ordenador {
+  width: 70%;
+}
+
+/* Botones del menú móvil */
+.btn-burger {
+  background: var(--primary-color);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  display: none;
+  cursor: pointer;
+}
+
+.btn-cerrar {
+  background: var(--primary-color);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+/* Menú móvil */
+.menu-movil {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Media Queries */
+@media (min-width: 768px) and (max-width: 991px) {
+  header {
+    justify-content: space-between;
+  }
+
+  header figure {
+    width: 50%;
+  }
+
+  header figure img {
+    width: 100%;
+  }
+
+  /* Ocultar menú escritorio */
+  header .menu-ordenador {
+    display: none;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .btn-burger {
+    display: block;
+  }
+
+  /* Configuración menú móvil */
+  .menu-movil {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .menu-movil .menu-principal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+  }
+
+  .menu-movil .menu-principal ul {
+    background: rgba(255, 0, 0, 0.217);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    height: 100vh;
+    width: 300px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  header figure {
+    width: 20%;
+  }
+
+  header figure img {
+    width: 90%;
+  }
+
+  header .menu-ordenador {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  header {
+    padding: 15px 5%;
+  }
+}

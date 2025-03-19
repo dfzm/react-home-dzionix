@@ -15,22 +15,20 @@ const ServiciosComplementarios = () => {
         <div className="complementarios">
           <h3> Diseño UX/UI </h3>
           <p>
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            cupiditate soluta natus assumenda facere, corporis molestiae itaque
-            voluptatibus totam necessitatibus omnis similique, facilis nostrum
-            culpa nobis? Quis alias explicabo aut?{" "}
+            Transformamos la forma en que tus clientes interactúan con tu sitio
+            web. Nuestro enfoque en UX/UI combina estética y funcionalidad para
+            ofrecer una navegación fluida y atractiva, mejorando la retención y
+            conversión.
           </p>
           <Boton name="+ INFO" />
         </div>
         <div className="complementarios">
           <h3> Optimización SEO </h3>
           <p>
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            cupiditate soluta natus assumenda facere, corporis molestiae itaque
-            voluptatibus totam necessitatibus omnis similique, facilis nostrum
-            culpa nobis? Quis alias explicabo aut?
+            Potenciamos la visibilidad online de tu negocio mediante estrategias
+            SEO efectivas. Implementamos mejoras técnicas y optimizamos el
+            contenido para incrementar el tráfico orgánico y fortalecer tu
+            presencia digital de manera sostenible.
           </p>
           <Boton name="+ INFO" />
         </div>

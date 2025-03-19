@@ -14,7 +14,7 @@ const Servicios = () => {
       descripcion:
         "Desarrollamos sitios web optimizados para SEO y con diseños responsivos.",
       nameBoton: "Ver más",
-      enlaceBoton: "https://dzionix.com/desarrollo-de-paginas-web/",
+      enlaceBoton: "https://dzionix.com/desarrollo-paginas-web/",
     },
     {
       id: 2,
@@ -23,7 +23,8 @@ const Servicios = () => {
       descripcion:
         "Desarrollamos tiendas online y catálogos digitales que impulsan las ventas.",
       nameBoton: "Ver más",
-      enlaceBoton: "https://dzionix.com/desarrollo-de-paginas-web/",
+      enlaceBoton:
+        "https://dzionix.com/desarrollo-de-tiendas-online-y-catalogo-virtuales/",
     },
     {
       id: 3,
@@ -32,7 +33,8 @@ const Servicios = () => {
       descripcion:
         "Rediseñamos sitios web con enfoque en usabilidad, rendimiento y SEO.",
       nameBoton: "Ver más",
-      enlaceBoton: "https://dzionix.com/desarrollo-de-paginas-web/",
+      enlaceBoton:
+        "https://dzionix.com/rediseno-web-profesional-potencia-tu-sitio-con-un-diseno-moderno-y-agil/",
     },
     {
       id: 4,

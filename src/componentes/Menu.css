@@ -1,0 +1,118 @@
+header > div.menu-ordenador > nav > ul > li:nth-child(4) {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+.menu-principal {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+}
+
+.menu-principal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-principal > ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #fff;
+  white-space: nowrap;
+  font-family: "Inter", Sans-serif;
+  font-size: 18px;
+}
+
+.menu-principal .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+}
+
+.menu-principal .menu-item:hover > .submenu {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.menu-principal .submenu .menu-item {
+  width: 100%;
+}
+
+.menu-principal .submenu .menu-item a {
+  padding: 0.75rem 1rem;
+  font-size: 0.95em;
+  color: #181818;
+}
+
+.menu-principal .submenu .menu-item:hover > a {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menu-principal .submenu .submenu {
+  top: 0;
+  left: 100%;
+  margin-top: -0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos específicos para menú móvil */
+@media (max-width: 991px) {
+  .menu-ordenador {
+    display: none;
+  }
+  .btn-burger {
+    display: block !important;
+  }
+  .menu-movil .menu-principal > ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu-movil .menu-principal .submenu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 1rem;
+  }
+
+  .menu-movil .menu-principal .submenu .menu-item a {
+    color: #fff;
+  }
+
+  .menu-movil .menu-principal .menu-item {
+    width: 100%;
+  }
+
+  .menu-movil .menu-principal .menu-item a {
+    padding: 0.75rem 1rem;
+  }
+}
